@@ -1,0 +1,132 @@
+:root {
+    --bg: #ffffff;
+    --text: #333333;
+    --card: #f0f0f0;
+    --primary: #0077ff;
+    --done: gray;
+  }
+  
+  .dark {
+    --bg: #121212;
+    --text: #f1f1f1;
+    --card: #1f1f1f;
+    --primary: #4dabf7;
+    --done: #777;
+  }
+  
+  .container {
+    max-width: 500px;
+    width: 100%;
+    padding: 2rem;
+    background: var(--bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: var(--text);
+    transition: all 0.3s ease;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .toggleTheme {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-weight: bold;
+  }
+  
+  .inputGroup {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+  }
+  
+  .inputGroup input {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .inputGroup button {
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .inputGroup button:hover {
+    background-color: #005fc2;
+  }
+  
+  .filtros {
+    margin-bottom: 1rem;
+  }
+  
+  .filtros button {
+    margin: 0 5px;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .filtros button:hover {
+    background-color: #d0d0d0;
+  }
+  
+  .taskList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .taskItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    margin-bottom: 0.5rem;
+    padding: 0.6rem;
+    border-radius: 5px;
+  }
+  
+  .taskTitle {
+    flex: 1;
+    margin-left: 0.5rem;
+    word-break: break-word;
+  }
+  
+  .done {
+    text-decoration: line-through;
+    color: var(--done);
+  }
+  
+  .taskActions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .taskActions button {
+    background: transparent;
+    border: none;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  @media (max-width: 600px) {
+    .inputGroup {
+      flex-direction: column;
+    }
+  
+    .inputGroup button {
+      width: 100%;
+    }
+  }
