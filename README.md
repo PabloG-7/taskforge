@@ -2,6 +2,7 @@
 
 **TaskForge** é um gerenciador de tarefas moderno, intuitivo e responsivo desenvolvido com **React + TypeScript**. Com um design elegante, suporte a tema escuro e recursos poderosos de produtividade.
 
+## 📸 Preview
 ![TaskForge Screenshot](https://raw.githubusercontent.com/PabloG-7/taskforge/refs/heads/main/taskforge.png)
 
 ## ✨ Funcionalidades
@@ -25,11 +26,6 @@
 ## 🌐 Acesso
 
 🔗 **[Acesse o site aqui](https://gerenciador-de-tarefas-wine.vercel.app/)**
-
-## 📸 Preview
-
-![Dark Mode Screenshot](./dark-mode.png) <!-- Atualize os caminhos conforme necessário -->
-![Light Mode Screenshot](./light-mode.png)
 
 ## 🚧 Instalação e Uso
 
@@ -58,6 +54,6 @@
 - Modo Pomodoro
 
 - Notificações e lembretes
-  
-  ## 📃 Licença
+
+## 📃 Licença
 Este projeto está sob a licença MIT.
