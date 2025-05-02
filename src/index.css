@@ -1,10 +1,23 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   color: #222;
   transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+  padding: 1rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  body {
+    align-items: center;
+    padding: 2rem;
+  }
 }

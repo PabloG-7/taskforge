@@ -1,132 +1,259 @@
 :root {
-    --bg: #ffffff;
-    --text: #333333;
-    --card: #f0f0f0;
-    --primary: #0077ff;
-    --done: gray;
-  }
-  
-  .dark {
-    --bg: #121212;
-    --text: #f1f1f1;
-    --card: #1f1f1f;
-    --primary: #4dabf7;
-    --done: #777;
-  }
-  
+  --bg: #ffffff;
+  --text: #333333;
+  --card: #f8f9fa;
+  --primary: #4361ee;
+  --primary-hover: #3a56d4;
+  --secondary: #f72585;
+  --done: #adb5bd;
+  --border: #e9ecef;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --radius: 8px;
+  --transition: all 0.2s ease;
+}
+
+.dark {
+  --bg: #121212;
+  --text: #f8f9fa;
+  --card: #1e1e1e;
+  --primary: #4cc9f0;
+  --primary-hover: #3aa8d8;
+  --secondary: #f72585;
+  --done: #6c757d;
+  --border: #2b2b2b;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  padding: 1.5rem;
+  background: var(--bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  color: var(--text);
+  transition: var(--transition);
+  margin: 0 auto;
+  border: 1px solid var(--border);
+}
+
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.toggleTheme {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.toggleTheme:hover {
+  background: var(--primary-hover);
+  transform: scale(1.05);
+}
+
+.inputGroup {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.inputGroup input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+  transition: var(--transition);
+}
+
+.inputGroup input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+}
+
+.inputGroup button {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.inputGroup button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.filtros {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filtros button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: var(--radius);
+  background-color: var(--card);
+  color: var(--text);
+  cursor: pointer;
+  transition: var(--transition);
+  font-weight: 500;
+}
+
+.filtros button:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.filtros button.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.taskList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--card);
+  padding: 1rem;
+  border-radius: var(--radius);
+  gap: 1rem;
+  border: 1px solid var(--border);
+  transition: var(--transition);
+}
+
+.taskItem:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.taskCheckbox {
+  min-width: 1.25rem;
+  min-height: 1.25rem;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.taskTitle {
+  flex: 1;
+  margin: 0 0.5rem;
+  word-break: break-word;
+  text-align: left;
+  font-size: 1rem;
+}
+
+.taskTitle input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--text);
+}
+
+.done {
+  text-decoration: line-through;
+  color: var(--done);
+}
+
+.taskActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.taskActions button {
+  background: transparent;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.taskActions button:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--primary);
+}
+
+.taskActions button.delete:hover {
+  color: var(--secondary);
+}
+
+.emptyState {
+  padding: 2rem;
+  text-align: center;
+  color: var(--done);
+}
+
+@media (max-width: 600px) {
   .container {
-    max-width: 500px;
-    width: 100%;
-    padding: 2rem;
-    background: var(--bg);
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    color: var(--text);
-    transition: all 0.3s ease;
+    padding: 1.25rem;
+    margin: 1rem auto;
   }
-  
+
   .title {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
   }
-  
+
   .toggleTheme {
-    margin-bottom: 1rem;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: var(--primary);
-    font-weight: bold;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
-  
+
   .inputGroup {
-    display: flex;
-    gap: 0.5rem;
-    margin: 1rem 0;
+    flex-direction: column;
   }
-  
-  .inputGroup input {
-    flex: 1;
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  .inputGroup button {
-    padding: 0.5rem 1rem;
-    background-color: var(--primary);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .inputGroup button:hover {
-    background-color: #005fc2;
-  }
-  
-  .filtros {
-    margin-bottom: 1rem;
-  }
-  
-  .filtros button {
-    margin: 0 5px;
-    padding: 0.4rem 0.8rem;
-    border: none;
-    border-radius: 5px;
-    background-color: #e0e0e0;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .filtros button:hover {
-    background-color: #d0d0d0;
-  }
-  
-  .taskList {
-    list-style: none;
-    padding: 0;
-  }
-  
+
   .taskItem {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: var(--card);
-    margin-bottom: 0.5rem;
-    padding: 0.6rem;
-    border-radius: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
   }
-  
-  .taskTitle {
-    flex: 1;
-    margin-left: 0.5rem;
-    word-break: break-word;
-  }
-  
-  .done {
-    text-decoration: line-through;
-    color: var(--done);
-  }
-  
+
   .taskActions {
-    display: flex;
-    gap: 0.5rem;
+    align-self: flex-end;
   }
-  
-  .taskActions button {
-    background: transparent;
-    border: none;
-    color: red;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  @media (max-width: 600px) {
-    .inputGroup {
-      flex-direction: column;
-    }
-  
-    .inputGroup button {
-      width: 100%;
-    }
-  }
+}
