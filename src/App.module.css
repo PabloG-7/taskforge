@@ -1,33 +1,37 @@
 :root {
   --bg: #ffffff;
-  --text: #333333;
-  --card: #f8f9fa;
-  --primary: #4361ee;
-  --primary-hover: #3a56d4;
-  --secondary: #f72585;
-  --done: #adb5bd;
-  --border: #e9ecef;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --radius: 8px;
-  --transition: all 0.2s ease;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --card: #ffffff;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --secondary: #ec4899;
+  --done: #94a3b8;
+  --border: #e2e8f0;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --radius: 12px;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
 }
 
 .dark {
-  --bg: #121212;
-  --text: #f8f9fa;
-  --card: #1e1e1e;
-  --primary: #4cc9f0;
-  --primary-hover: #3aa8d8;
-  --secondary: #f72585;
-  --done: #6c757d;
-  --border: #2b2b2b;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  --bg: #1e293b;
+  --text: #f8fafc;
+  --text-secondary: #94a3b8;
+  --card: #0f172a;
+  --primary: #818cf8;
+  --primary-hover: #6366f1;
+  --secondary: #f472b6;
+  --done: #64748b;
+  --border: #334155;
+  --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.25), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
 }
 
 .container {
-  max-width: 600px;
+  max-width: 640px;
   width: 100%;
-  padding: 1.5rem;
+  padding: 1.6rem;
   background: var(--bg);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -36,21 +40,43 @@
   transition: var(--transition);
   margin: 0 auto;
   border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--gradient);
 }
 
 .title {
-  font-size: 1.8rem;
+  font-size: 2rem;
+  margin: 1rem 0 1.5rem;
+  font-weight: 700;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
-  color: var(--primary);
-  font-weight: 600;
 }
 
 .toggleTheme {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: var(--primary);
-  color: white;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: var(--card);
+  color: var(--primary);
   border: none;
   border-radius: 50%;
   width: 2.5rem;
@@ -61,79 +87,90 @@
   cursor: pointer;
   transition: var(--transition);
   box-shadow: var(--shadow);
+  z-index: 10;
 }
 
 .toggleTheme:hover {
-  background: var(--primary-hover);
-  transform: scale(1.05);
+  transform: scale(1.1) rotate(15deg);
+  color: var(--primary-hover);
 }
 
 .inputGroup {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin: 1.5rem 0;
+  position: relative;
 }
 
 .inputGroup input {
   flex: 1;
-  padding: 0.75rem 1rem;
+  padding: 1rem 1.25rem;
   font-size: 1rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: var(--bg);
+  background: var(--card);
   color: var(--text);
   transition: var(--transition);
+  font-weight: 500;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .inputGroup input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
 .inputGroup button {
-  padding: 0.75rem 1.5rem;
-  background-color: var(--primary);
+  padding: 0 1.5rem;
+  background: var(--gradient);
   color: white;
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  font-weight: 500;
+  font-weight: 600;
   transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
 }
 
 .inputGroup button:hover {
-  background-color: var(--primary-hover);
   transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 .filtros {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
 .filtros button {
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.25rem;
   border: none;
-  border-radius: var(--radius);
+  border-radius: 20px;
   background-color: var(--card);
-  color: var(--text);
+  color: var(--text-secondary);
   cursor: pointer;
   transition: var(--transition);
   font-weight: 500;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
 }
 
 .filtros button:hover {
-  background-color: var(--primary);
-  color: white;
+  color: var(--primary);
+  border-color: var(--primary);
 }
 
 .filtros button.active {
-  background-color: var(--primary);
+  background: var(--gradient);
   color: white;
+  border-color: transparent;
 }
 
 .taskList {
@@ -142,7 +179,7 @@
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .taskItem {
@@ -150,16 +187,17 @@
   align-items: center;
   justify-content: space-between;
   background: var(--card);
-  padding: 1rem;
+  padding: 1.25rem;
   border-radius: var(--radius);
   gap: 1rem;
   border: 1px solid var(--border);
   transition: var(--transition);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 }
 
 .taskItem:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
 }
 
 .taskCheckbox {
@@ -167,28 +205,32 @@
   min-height: 1.25rem;
   accent-color: var(--primary);
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .taskTitle {
   flex: 1;
-  margin: 0 0.5rem;
+  margin: 0 0.75rem;
   word-break: break-word;
   text-align: left;
   font-size: 1rem;
+  font-weight: 500;
 }
 
 .taskTitle input {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--bg);
   color: var(--text);
+  font-weight: 500;
 }
 
 .done {
   text-decoration: line-through;
   color: var(--done);
+  opacity: 0.8;
 }
 
 .taskActions {
@@ -199,10 +241,10 @@
 .taskActions button {
   background: transparent;
   border: none;
-  color: var(--text);
+  color: var(--text-secondary);
   cursor: pointer;
-  width: 2rem;
-  height: 2rem;
+  width: 2.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -211,46 +253,97 @@
 }
 
 .taskActions button:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(99, 102, 241, 0.1);
   color: var(--primary);
+  transform: scale(1.1);
 }
 
 .taskActions button.delete:hover {
+  background: rgba(236, 72, 153, 0.1);
   color: var(--secondary);
 }
 
 .emptyState {
-  padding: 2rem;
+  padding: 2.5rem 1rem;
   text-align: center;
-  color: var(--done);
+  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emptyState svg {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.emptyState p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+}
+
+.emptyState .emoji {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  margin: 1rem 0;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--gradient);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 600px) {
   .container {
-    padding: 1.25rem;
+    padding: 1.2rem;
     margin: 1rem auto;
+    border-radius: 16px;
   }
 
   .title {
-    font-size: 1.5rem;
-    margin-top: 1.5rem;
+    font-size: 1.75rem;
+    margin-top: 1rem;
   }
 
   .toggleTheme {
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 2.25rem;
-    height: 2.25rem;
+    top: 1rem;
+    right: 1rem;
   }
 
   .inputGroup {
     flex-direction: column;
   }
 
+  .inputGroup button {
+    padding: 0.75rem;
+    justify-content: center;
+  }
+
   .taskItem {
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.75rem;
+    gap: 1rem;
+    padding: 1.5rem;
   }
 
   .taskActions {
