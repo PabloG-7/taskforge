@@ -5,6 +5,9 @@
 ## 📸 Preview
 ![TaskForge Screenshot](https://raw.githubusercontent.com/PabloG-7/taskforge/refs/heads/main/taskforge.png)
 
+## 🌐 Acesso
+🔗 **[Acesse o site aqui](https://gerenciador-de-tarefas-wine.vercel.app/)**
+
 ## ✨ Funcionalidades
 
 - ✅ Adicionar, editar, concluir e excluir tarefas
@@ -22,10 +25,6 @@
 - [Vite](https://vitejs.dev/)
 - CSS Modules
 - Hooks modernos (`useState`, `useEffect`)
-
-## 🌐 Acesso
-
-🔗 **[Acesse o site aqui](https://gerenciador-de-tarefas-wine.vercel.app/)**
 
 ## 🚧 Instalação e Uso
 
@@ -45,9 +44,9 @@
    ```
 
 ## 📌 Roadmap Futuro
- -Integração com backend (Node.js + DB)
+- Integração com backend (Node.js + DB)
 
- -Login/Autenticação de usuários
+- Login/Autenticação de usuários
 
 - Salvar tarefas em nuvem
 
