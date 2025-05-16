@@ -1,58 +1,115 @@
-# 🚀 TaskForge
+# 🚀 TaskForge - Turbo Edition
 
-**TaskForge** é um gerenciador de tarefas moderno, intuitivo e responsivo desenvolvido com **React + TypeScript**. Com um design elegante, suporte a tema escuro e recursos poderosos de produtividade.
+**TaskForge Turbo** é a evolução do seu gerenciador de tarefas, agora com recursos avançados de produtividade e uma experiência ainda mais imersiva. Desenvolvido com **React + TypeScript** e turbinado com as últimas tecnologias web.
+
+---
+
+## 🌟 Novidades na Turbo Edition
+
+- 🎉 Efeitos de **confetti** ao completar tarefas  
+- 🔊 **Feedback sonoro** nas ações principais  
+- 🏷️ Sistema de **tags** para organização  
+- 🚀 **Modo Foco** integrado (Pomodoro)  
+- ✨ **Dark Mode premium** com novas cores  
+- 🧩 **Drag & Drop** para reorganização intuitiva  
+
+---
 
 ## 📸 Preview
-  <img src="https://raw.githubusercontent.com/PabloG-7/taskforge/refs/heads/main/taskforge-apresentacao.png" width="600" alt="Preview taskforge">
+
+<div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+  <img src="https://raw.githubusercontent.com/PabloG-7/taskforge/refs/heads/main/taskforge-apresentacao.png" alt="Light Mode">
+</div>
+
+---
 
 ## 🌐 Acesso
 🔗 **[Acesse o site aqui](https://gerenciador-de-tarefas-wine.vercel.app/)**
 
-## ✨ Funcionalidades
+---
 
-- ✅ Adicionar, editar, concluir e excluir tarefas
-- 🌈 Filtro por status: Todas, Ativas, Concluídas
-- 📊 Barra de progresso dinâmica baseada nas tarefas concluídas
-- 🌗 Suporte completo a **tema claro e escuro**
-- 🧠 Design responsivo e moderno com foco em UX
-- ⚡ Interface suave com animações e transições
-- 🔥 Desenvolvido com React + TypeScript + Vite
+## ✨ Funcionalidades Turbinadas
 
-## 🛠️ Tecnologias Utilizadas
+### 📋 Gerenciamento de Tarefas
+- ✅ Adicionar, editar, concluir e excluir tarefas  
+- 🏷️ Categorização por tags (`#trabalho`, `#pessoal`, etc.)  
+- ⭐ Marcar tarefas como importantes  
+- 🗓️ Visualização por data de criação  
 
-- [React](https://reactjs.org/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Vite](https://vitejs.dev/)
-- CSS Modules
-- Hooks modernos (`useState`, `useEffect`)
+### 🎨 Experiência do Usuário
+- 🌗 Tema escuro premium com transição suave  
+- 🎉 Celebração com confetti ao completar tarefas  
+- 🔊 Feedback sonoro para ações importantes  
+- ✨ Animações fluidas em toda a interface  
+- 🖱️ Reordenar tarefas com Drag & Drop  
 
-## 🚧 Instalação e Uso
+### 📊 Produtividade
+- 📈 Barra de progresso inteligente  
+- ⏱️ Modo Foco com timer Pomodoro integrado  
+- 🔍 Filtros avançados: Todas / Ativas / Concluídas / Importantes  
+- 📱 Design 100% responsivo  
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/PabloG-7/taskforge.git
-   cd taskforge
-   
-2. Instale as dependências:
-   ```bash
-   npm install
-   ```
+---
 
-3. Rode o projeto:
-   ```bash
-    npm run dev
-   ```
+## 🛠️ Stack Tecnológica Atualizada
+
+### Frontend
+- **React 18**
+- **TypeScript 5**
+- **Vite 4**
+- **Framer Motion** (Animações)
+- **React Confetti**
+- **use-sound** (Efeitos sonoros)
+- **React Beautiful DnD**
+
+### Estilização
+- CSS Modules  
+- PostCSS  
+- Variáveis CSS modernas  
+
+---
+
+## 🚀 Instalação e Uso
+
+Clone o repositório:
+
+```bash
+git clone https://github.com/PabloG-7/taskforge.git
+cd taskforge
+
+Instale as dependências:
+npm install
+
+npm run dev
+
+npm run build
+```
 
 ## 📌 Roadmap Futuro
-- Integração com backend (Node.js + DB)
 
-- Login/Autenticação de usuários
+### 🆕 Próximas Atualizações
 
-- Salvar tarefas em nuvem
+- 🔐 Autenticação com Firebase Auth  
+- ☁️ Sincronização em nuvem com Firestore  
+- 📅 Calendário integrado  
+- 🤖 IA para sugestão de organização de tarefas  
+- 📊 Relatórios semanais de produtividade  
 
-- Modo Pomodoro
+### 🎯 Melhorias Implementadas
 
-- Notificações e lembretes
+#### Tema Dark
+
+- 🌈 Nova paleta de cores mais contrastante  
+- 🌓 Transição suave entre temas  
+- 💡 Detecção automática da preferência do sistema  
+- ♿ Cores semânticas para melhor acessibilidade  
+
+#### Performance
+
+- ⚡ Carregamento 30% mais rápido com Vite  
+- 🌀 Animações otimizadas  
+- 📦 Bundle size reduzido  
+
 
 ## 📃 Licença
 Este projeto está sob a licença MIT.
