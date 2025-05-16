@@ -1,9 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+:root {
+  color-scheme: light dark;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+  background: linear-gradient(135deg, #50009f 0%, #e4e8f0 100%);
   color: #2d3748;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 100vh;
@@ -22,11 +26,17 @@ body {
   body {
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 50%, #d5dce8 100%);
+    background: linear-gradient(135deg, #50009f 0%, #e4e8f0 50%, #d5dce8 100%);
   }
 }
 
-body.dark {
+body[data-theme="dark"] {
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   color: #f8fafc;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  color-scheme: dark;
 }
