@@ -7,7 +7,7 @@
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #50009f 0%, #e4e8f0 100%);
+  background: linear-gradient(135deg, #ede7fa  0%, #005eff 100%);
   color: #2d3748;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   min-height: 100vh;
@@ -26,7 +26,7 @@ body {
   body {
     align-items: center;
     padding: 2rem;
-    background: linear-gradient(135deg, #50009f 0%, #e4e8f0 50%, #d5dce8 100%);
+    background: linear-gradient(135deg, #ede7fa 0%, #e4e8f0 50%, #005eff 100%);
   }
 }
 

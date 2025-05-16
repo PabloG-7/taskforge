@@ -54,9 +54,9 @@ export default function App() {
   const [notificationMessage, setNotificationMessage] = useState('');
 
   useEffect(() => {
-    localStorage.setItem('theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+  localStorage.setItem('theme', theme);
+  document.documentElement.setAttribute('data-theme', theme);
+}, [theme]);
   
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
