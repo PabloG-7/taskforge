@@ -12,12 +12,10 @@ import {
   FaTasks,
   FaRegCheckCircle,
   FaRegSmile,
-  FaRegFrown,
   FaFire,
   FaRocket,
   FaTrophy,
-  FaBell,
-  FaBellSlash
+  FaBell
 } from 'react-icons/fa';
 import { AnimatePresence, motion } from 'framer-motion';
 
