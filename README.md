@@ -51,16 +51,10 @@
 
 ---
 
-## 🛠️ Stack Tecnológica Atualizada
-
-### Frontend
-- **React 18**
-- **TypeScript 5**
-- **Vite 4**
-- **Framer Motion** (Animações)
-- **React Confetti**
-- **use-sound** (Efeitos sonoros)
-- **React Beautiful DnD**
+## 🛠️ Stack Tecnológica 
+- **React**
+- **TypeScript**
+- **Vite**
 
 ### Estilização
 - CSS Modules  
