@@ -1,6 +1,6 @@
-# 🚀 TaskForge - Turbo Edition
+# 🚀 TaskForge
 
-**TaskForge Turbo** é a evolução do seu gerenciador de tarefas, agora com recursos avançados de produtividade e uma experiência ainda mais imersiva. Desenvolvido com **React + TypeScript** e turbinado com as últimas tecnologias web.
+**TaskForge** é a evolução do seu gerenciador de tarefas, agora com recursos avançados de produtividade e uma experiência ainda mais imersiva. Desenvolvido com **React + TypeScript** e turbinado com as últimas tecnologias web.
 
 ---
 
