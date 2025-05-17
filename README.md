@@ -4,10 +4,9 @@
 
 ---
 
-## 🌟 Novidades na Turbo Edition
+## 🌟 Novidades
 
 - 🎉 Efeitos de **confetti** ao completar tarefas  
-- 🔊 **Feedback sonoro** nas ações principais  
 - 🏷️ Sistema de **tags** para organização  
 - 🚀 **Modo Foco** integrado (Pomodoro)  
 - ✨ **Dark Mode premium** com novas cores  
