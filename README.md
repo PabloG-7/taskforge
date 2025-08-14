@@ -103,6 +103,5 @@ npm run build
 - 🌀 Animações otimizadas  
 - 📦 Bundle size reduzido  
 
-
 ## 📃 Licença
 Este projeto está sob a licença MIT.
