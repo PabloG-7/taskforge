@@ -7,7 +7,6 @@ import {
   FaEdit, 
   FaSave, 
   FaPlus,
-  FaCheck,
   FaListUl,
   FaTasks,
   FaRegCheckCircle,
