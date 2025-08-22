@@ -15,7 +15,9 @@ import {
   FaFire,
   FaRocket,
   FaTrophy,
-  FaBell
+  FaBell,
+  FaTimes,
+  FaFilter
 } from 'react-icons/fa';
 import { AnimatePresence, motion } from 'framer-motion';
 
@@ -50,11 +52,12 @@ export default function App() {
   const [editText, setEditText] = useState('');
   const [showNotification, setShowNotification] = useState(false);
   const [notificationMessage, setNotificationMessage] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
-  localStorage.setItem('theme', theme);
-  document.documentElement.setAttribute('data-theme', theme);
-}, [theme]);
+    localStorage.setItem('theme', theme);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
   
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -155,82 +158,76 @@ export default function App() {
 
   return (
     <div className={styles.container}>
-      <button 
-        className={styles.toggleTheme} 
-        onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-        aria-label="Alternar tema"
-      >
-        {theme === 'light' ? <FaMoon /> : <FaSun />}
-      </button>
+      <div className={styles.header}>
+        <div className={styles.headerTop}>
+          <h1 className={styles.title}>TaskForge</h1>
+          <button 
+            className={styles.toggleTheme} 
+            onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            aria-label="Alternar tema"
+          >
+            {theme === 'light' ? <FaMoon /> : <FaSun />}
+          </button>
+        </div>
+        <p className={styles.subtitle}>Domine suas tarefas com simplicidade</p>
+      </div>
 
-      <h1 className={styles.title}>TaskForge</h1>
-      <p className={styles.subtitle}>Domine suas tarefas. Sem esforço, com foco</p>
-
-      <div className={styles.inputGroup}>
-        <input 
-          value={text} 
-          onChange={(e) => setText(e.target.value)} 
-          onKeyDown={handleKeyDown}
-          placeholder="O que precisa ser feito?" 
-          aria-label="Adicionar nova tarefa"
-          className={styles.taskInput}
-        />
-        <button onClick={addTask} aria-label="Adicionar">
-          <FaPlus /> Adicionar
-        </button>
+      <div className={styles.inputContainer}>
+        <div className={styles.inputGroup}>
+          <input 
+            value={text} 
+            onChange={(e) => setText(e.target.value)} 
+            onKeyDown={handleKeyDown}
+            placeholder="O que precisa ser feito?" 
+            aria-label="Adicionar nova tarefa"
+            className={styles.taskInput}
+          />
+          <button onClick={addTask} aria-label="Adicionar" className={styles.addButton}>
+            <FaPlus />
+          </button>
+        </div>
       </div>
 
       {totalTasks > 0 && (
-        <>
-          <div className={styles.progressBar}>
-            <div 
-              className={styles.progressFill} 
-              style={{ width: `${completionPercentage}%` }}
-            />
-          </div>
-
+        <div className={styles.statsContainer}>
           <div className={styles.stats}>
-            <span>
-              <FaTasks /> {totalTasks} tarefas
-            </span>
-            <span>
-              <FaCheck /> {completedTasks} concluídas
-            </span>
-            <span>
-              <FaFire /> {importantTasks} importantes
-            </span>
-            <span>
-              {completionPercentage}% completo
-            </span>
+            <div className={styles.stat}>
+              <span className={styles.statNumber}>{totalTasks}</span>
+              <span className={styles.statLabel}>Total</span>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statNumber}>{completedTasks}</span>
+              <span className={styles.statLabel}>Concluídas</span>
+            </div>
+            <div className={styles.stat}>
+              <span className={styles.statNumber}>{importantTasks}</span>
+              <span className={styles.statLabel}>Importantes</span>
+            </div>
           </div>
-        </>
+          
+          <div className={styles.progressSection}>
+            <div className={styles.progressHeader}>
+              <span>Progresso</span>
+              <span>{completionPercentage}%</span>
+            </div>
+            <div className={styles.progressBar}>
+              <div 
+                className={styles.progressFill} 
+                style={{ width: `${completionPercentage}%` }}
+              />
+            </div>
+          </div>
+        </div>
       )}
 
-      <div className={styles.filtros}>
+      <div className={styles.controls}>
         <button 
-          onClick={() => setFilter('all')} 
-          className={filter === 'all' ? styles.active : ''}
+          className={styles.filterToggle}
+          onClick={() => setShowFilters(!showFilters)}
         >
-          <FaListUl /> Todas
+          <FaFilter /> Filtros
         </button>
-        <button 
-          onClick={() => setFilter('todo')} 
-          className={filter === 'todo' ? styles.active : ''}
-        >
-          <FaTasks /> Pendentes
-        </button>
-        <button 
-          onClick={() => setFilter('important')} 
-          className={filter === 'important' ? styles.active : ''}
-        >
-          <FaRocket /> Importantes
-        </button>
-        <button 
-          onClick={() => setFilter('done')} 
-          className={filter === 'done' ? styles.active : ''}
-        >
-          <FaRegCheckCircle /> Concluídas
-        </button>
+        
         {completedTasks > 0 && (
           <button 
             onClick={clearCompleted}
@@ -241,121 +238,149 @@ export default function App() {
         )}
       </div>
 
-      <AnimatePresence mode="popLayout">
-        <ul className={styles.taskList}>
-          {sortedTasks.length === 0 ? (
-            <motion.div
-              key="empty-state"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className={styles.emptyState}
-            >
-              <div className={styles.emoji}>
-                {filter === 'all' ? <FaRegSmile /> : 
-                 filter === 'done' ? <FaTrophy /> : 
-                 filter === 'important' ? <FaRocket /> : <FaRegCheckCircle />}
-              </div>
-              <p>
-                {filter === 'all' 
-                  ? 'Nenhuma tarefa encontrada' 
-                  : filter === 'done' 
-                    ? 'Nenhuma tarefa concluída ainda' 
-                    : filter === 'important'
-                      ? 'Nenhuma tarefa importante'
-                      : 'Todas as tarefas estão concluídas!'}
-              </p>
-              <p>
-                {filter === 'all' 
-                  ? 'Comece adicionando uma nova tarefa acima!'
-                  : filter === 'done'
-                    ? 'Complete algumas tarefas para vê-las aqui'
-                    : filter === 'important'
-                      ? 'Marque tarefas como importantes para vê-las aqui'
-                      : 'Parabéns! Você está em dia!'}
-              </p>
-            </motion.div>
-          ) : (
-            sortedTasks.map(task => (
-              <motion.li
-                key={task.id}
-                layout
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                className={`${styles.taskItem} ${task.important ? styles.important : ''}`}
+      {showFilters && (
+        <div className={styles.filterTabs}>
+          <button 
+            onClick={() => {setFilter('all'); setShowFilters(false);}} 
+            className={`${styles.filterTab} ${filter === 'all' ? styles.active : ''}`}
+          >
+            <FaListUl /> Todas
+          </button>
+          <button 
+            onClick={() => {setFilter('todo'); setShowFilters(false);}} 
+            className={`${styles.filterTab} ${filter === 'todo' ? styles.active : ''}`}
+          >
+            <FaTasks /> Pendentes
+          </button>
+          <button 
+            onClick={() => {setFilter('important'); setShowFilters(false);}} 
+            className={`${styles.filterTab} ${filter === 'important' ? styles.active : ''}`}
+          >
+            <FaRocket /> Importantes
+          </button>
+          <button 
+            onClick={() => {setFilter('done'); setShowFilters(false);}} 
+            className={`${styles.filterTab} ${filter === 'done' ? styles.active : ''}`}
+          >
+            <FaRegCheckCircle /> Concluídas
+          </button>
+        </div>
+      )}
+
+      <div className={styles.taskListContainer}>
+        <AnimatePresence mode="popLayout">
+          <ul className={styles.taskList}>
+            {sortedTasks.length === 0 ? (
+              <motion.div
+                key="empty-state"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className={styles.emptyState}
               >
-                <div className={styles.taskContent}>
-                  <input 
-                    type="checkbox" 
-                    className={styles.taskCheckbox}
-                    checked={task.done} 
-                    onChange={() => toggleDone(task.id)}
-                    aria-label={task.done ? 'Marcar como pendente' : 'Marcar como concluída'}
-                  />
-                  
-                  {editingId === task.id ? (
-                    <input
-                      className={styles.taskTitle}
-                      value={editText}
-                      onChange={(e) => setEditText(e.target.value)}
-                      onKeyDown={(e) => e.key === 'Enter' && saveEdit(task.id)}
-                      autoFocus
-                    />
-                  ) : (
-                    <span className={`${styles.taskTitle} ${task.done ? styles.done : ''}`}>
-                      {task.text}
-                      <div className={styles.taskMeta}>
-                        {task.createdAt.toLocaleDateString('pt-BR', {
-                          day: '2-digit',
-                          month: '2-digit',
-                          year: 'numeric',
-                          hour: '2-digit',
-                          minute: '2-digit'
-                        })}
-                      </div>
-                    </span>
-                  )}
+                <div className={styles.emoji}>
+                  {filter === 'all' ? <FaRegSmile /> : 
+                  filter === 'done' ? <FaTrophy /> : 
+                  filter === 'important' ? <FaRocket /> : <FaRegCheckCircle />}
                 </div>
-                
-                <div className={styles.taskActions}>
-                  <button 
-                    onClick={() => toggleImportant(task.id)}
-                    aria-label={task.important ? 'Remover prioridade' : 'Marcar como importante'}
-                    className={task.important ? styles.importantActive : ''}
-                  >
-                    {task.important ? <FaFire /> : <FaBell />}
-                  </button>
+                <h3>
+                  {filter === 'all' 
+                    ? 'Nenhuma tarefa' 
+                    : filter === 'done' 
+                      ? 'Nada concluído' 
+                      : filter === 'important'
+                        ? 'Nada importante'
+                        : 'Tudo feito!'}
+                </h3>
+                <p>
+                  {filter === 'all' 
+                    ? 'Adicione sua primeira tarefa'
+                    : filter === 'done'
+                      ? 'Complete tarefas para vê-las aqui'
+                      : filter === 'important'
+                        ? 'Marque tarefas como importantes'
+                        : 'Parabéns! Você está em dia!'}
+                </p>
+              </motion.div>
+            ) : (
+              sortedTasks.map(task => (
+                <motion.li
+                  key={task.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                  className={`${styles.taskCard} ${task.important ? styles.important : ''} ${task.done ? styles.completed : ''}`}
+                >
+                  <div className={styles.taskMain}>
+                    <div className={styles.taskCheckboxContainer}>
+                      <input 
+                        type="checkbox" 
+                        className={styles.taskCheckbox}
+                        checked={task.done} 
+                        onChange={() => toggleDone(task.id)}
+                        aria-label={task.done ? 'Marcar como pendente' : 'Marcar como concluída'}
+                      />
+                    </div>
+                    
+                    <div className={styles.taskContent}>
+                      {editingId === task.id ? (
+                        <input
+                          className={styles.taskEditInput}
+                          value={editText}
+                          onChange={(e) => setEditText(e.target.value)}
+                          onKeyDown={(e) => e.key === 'Enter' && saveEdit(task.id)}
+                          autoFocus
+                        />
+                      ) : (
+                        <div className={styles.taskTextContent}>
+                          <span className={styles.taskTitle}>{task.text}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                   
-                  {editingId === task.id ? (
+                  <div className={styles.taskActions}>
                     <button 
-                      onClick={() => saveEdit(task.id)}
-                      aria-label="Salvar edição"
+                      onClick={() => toggleImportant(task.id)}
+                      aria-label={task.important ? 'Remover prioridade' : 'Marcar como importante'}
+                      className={`${styles.actionButton} ${task.important ? styles.importantActive : ''}`}
                     >
-                      <FaSave />
+                      {task.important ? <FaFire /> : <FaBell />}
                     </button>
-                  ) : (
+                    
+                    {editingId === task.id ? (
+                      <button 
+                        onClick={() => saveEdit(task.id)}
+                        aria-label="Salvar edição"
+                        className={styles.actionButton}
+                      >
+                        <FaSave />
+                      </button>
+                    ) : (
+                      <button 
+                        onClick={() => startEdit(task.id, task.text)}
+                        aria-label="Editar tarefa"
+                        className={styles.actionButton}
+                      >
+                        <FaEdit />
+                      </button>
+                    )}
                     <button 
-                      onClick={() => startEdit(task.id, task.text)}
-                      aria-label="Editar tarefa"
+                      onClick={() => deleteTask(task.id)}
+                      className={`${styles.actionButton} ${styles.delete}`}
+                      aria-label="Excluir tarefa"
                     >
-                      <FaEdit />
+                      <FaRegTrashAlt />
                     </button>
-                  )}
-                  <button 
-                    onClick={() => deleteTask(task.id)}
-                    className={styles.delete}
-                    aria-label="Excluir tarefa"
-                  >
-                    <FaRegTrashAlt />
-                  </button>
-                </div>
-              </motion.li>
-            ))
-          )}
-        </ul>
-      </AnimatePresence>
+                  </div>
+                </motion.li>
+              ))
+            )}
+          </ul>
+        </AnimatePresence>
+      </div>
 
       <AnimatePresence>
         {showNotification && (
@@ -365,7 +390,10 @@ export default function App() {
             exit={{ opacity: 0, y: 20 }}
             className={styles.notification}
           >
-            {notificationMessage}
+            <span>{notificationMessage}</span>
+            <button onClick={() => setShowNotification(false)} className={styles.notificationClose}>
+              <FaTimes />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>

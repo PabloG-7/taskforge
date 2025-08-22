@@ -1,37 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   color-scheme: light dark;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  background: linear-gradient(135deg, #ede7fa  0%, #005eff 100%);
-  color: #2d3748;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #f8fafc;
+  color: #0f172a;
+  transition: all 0.3s ease;
   min-height: 100vh;
   padding: 1rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   line-height: 1.5;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-@media (min-width: 768px) {
-  body {
-    align-items: center;
-    padding: 2rem;
-    background: linear-gradient(135deg, #ede7fa 0%, #e4e8f0 50%, #005eff 100%);
-  }
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body[data-theme="dark"] {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: #0f172a;
   color: #f8fafc;
 }
 
@@ -39,4 +36,20 @@ body[data-theme="dark"] {
 [data-theme="dark"] select,
 [data-theme="dark"] textarea {
   color-scheme: dark;
+}
+
+/* Melhorias de acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Foco visível para acessibilidade */
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }
