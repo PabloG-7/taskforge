@@ -17,7 +17,7 @@
 ## 📸 Preview
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-  <img src="https://raw.githubusercontent.com/PabloG-7/taskforge/refs/heads/main/taskforge-apresentacao.png" alt="Light Mode">
+  <img src="https://raw.githubusercontent.com/PabloG-7/taskforge/refs/heads/main/taskforge-linkedin.png" alt="Light Mode">
 </div>
 
 ---
